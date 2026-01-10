@@ -1,96 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>Idle Sentience</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-        <div class="tab-bar">
-            <button id="impulseTabBarButton" class="btn btn-tab-bar purple" onclick="switchTab('impulse')">Impulse</button>
-            <button id="reactionTabBarButton" class="btn btn-tab-bar blue" onclick="switchTab('reaction')">Reaction</button>
-            <button id="patternTabBarButton" class="btn btn-tab-bar yellow" onclick="switchTab('pattern')">Pattern</button>
-            <button id="linkTabBarButton" class="btn btn-tab-bar red" onclick="switchTab('link')">Link</button>
-            <button id="focusTabBarButton" class="btn btn-tab-bar orange" onclick="switchTab('focus')">Focus</button>
-            <button id="thoughtTabBarButton" class="btn btn-tab-bar green" onclick="switchTab('thought')">Thought</button>
-            <button id="devWipeButton" class="btn btn-dev-wipe" onclick="devWipeSave()">HARD reset</button>
-        </div>
+  <title>Idle Sentience</title>
 
-        <div class="header">
-            <div class="header-game-logo">
-                <!--LOGO-->
-            </div>
-            <div class="header-value-label-container">
-                <div id="impulseValueLabel" class="value-label" aria-live="polite">Impulse: 0</div>
-                <div id="reactionValueLabel" class="value-label" aria-live="polite">Reaction: 0</div>
-                <div id="patternValueLabel" class="value-label" aria-live="polite">Pattern: 0</div>
-                <div id="linkValueLabel" class="value-label" aria-live="polite">Link: 0</div>
-                <div id="focusValueLabel" class="value-label" aria-live="polite">Focus: 0</div>
-                <div id="thoughtValueLabel" class="value-label" aria-live="polite">Thought: 0</div>
-            </div>
-        </div>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/png" href="img/icon.png">
+</head>
+<body>
+  <main>
+    <div class="content-wrapper">
+      <header class="header">
+        <span class="header-title">Idle Sentience</span>
+      </header>
 
-        <main>
+      <div class="below-header">
+        <nav class="tab-bar">
+          <button class="tab-button" data-nav="screen-sentience">Sentience</button>
+          <button class="tab-button" data-nav="screen-settings">Settings</button>
+        </nav> 
 
-            <div class="tab-content-wrapper">
-                <div id="tabImpulseContent" class="tab-content">             
-                    <button id="impulseButton" class="btn purple" onclick="generateImpulse()">Generate impulse</button>              
-                </div>
-                <div id="tabReactionContent" class="tab-content">                
-                    <button id="reactionButton" class="btn blue" onclick="generateReaction()">Generate reaction</button>
-                </div>
-                <div id="tabPatternContent" class="tab-content">                
-                    <button id="patternButton" class="btn yellow" onclick="generatePattern()">Generate pattern</button>
-                </div>
-                <div id="tabLinkContent" class="tab-content">                
-                    <button id="linkButton" class="btn red" onclick="generateLink()">Generate link</button>
-                </div>
-                <div id="tabFocusContent" class="tab-content">                
-                    <button id="focusButton" class="btn orange" onclick="generateFocus()">Generate focus</button>
-                </div>
-                <div id="tabThoughtContent" class="tab-content">                
-                    <button id="thoughtButton" class="btn green" onclick="generateThought()">Generate thought</button>
-                </div>
-            </div>
+        <section id="screen-sentience" data-screen hidden>
+          <div id="sentience-root"></div>
+        </section>
 
-            <div class="progress-wrapper">
-                <div id="impulseProgressContainer" class="progress-container">
-                    <div id="impulseProgress" class="progress-bar"></div>
-                    <div id="impulseBarLabel" class="progress-bar-label">Impulse progress</div>
-                </div>
-                <div id="reactionProgressContainer" class="progress-container">
-                    <div id="reactionProgress" class="progress-bar"></div>
-                    <div id="reactionBarLabel" class= "progress-bar-label">Reaction progress</div>
-                </div>
-                <div id="patternProgressContainer" class="progress-container">
-                    <div id="patternProgress" class="progress-bar"></div>
-                    <div id="patternBarLabel" class= "progress-bar-label">Pattern progress</div>
-                </div>
-                <div id="linkProgressContainer" class="progress-container">
-                    <div id="linkProgress" class="progress-bar"></div>
-                    <div id="linkBarLabel" class= "progress-bar-label">Link progress</div>
-                </div>
-                <div id="focusProgressContainer" class="progress-container">
-                    <div id="focusProgress" class="progress-bar"></div>
-                    <div id="focusBarLabel" class= "progress-bar-label">Focus progress</div>
-                </div>
-                <div id="thoughtProgressContainer" class="progress-container">
-                    <div id="thoughtProgress" class="progress-bar"></div>
-                    <div id="thoughtBarLabel" class= "progress-bar-label">Thought progress</div>
-                </div>
-            </div>  
+        <section id="screen-settings" data-screen hidden>
+          <div id="settings-root"></div>
+        </section>
 
-        </main>
-        
-        <script src="js/impulses.js"></script>
-        <script src="js/reactions.js"></script>
-        <script src="js/patterns.js"></script>
-        <script src="js/links.js"></script>
-        <script src="js/foci.js"></script>
-        <script src="js/thoughts.js"></script>
-        <script src="js/helper.js"></script>
-        <script src="js/main.js"></script>
-    </body>
+
+      </div>
+    </div>
+
+
+  </main>
+
+  <script type="module" src="js/gameEngine.js"></script>
+</body>
 </html>
