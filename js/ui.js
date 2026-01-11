@@ -11,17 +11,14 @@ export class UI {
             el.setAttribute("tabindex", "-1");
             el.focus();
             }
-
         document.querySelectorAll(".tab-button").forEach(b => b.classList.remove("is-active"));
         const active = document.querySelector(`.tab-button[data-nav="${AId}"]`);
         if (active) active.classList.add("is-active");
-
-
         if (AId == "screen-sentience") {
             this.buildSentienceScreen(ADataPackage.sentienceCount);
         }
         if (AId == "screen-settings") {
-            console.log("settings");
+            this.buildSettingsScreen();
         }
     }
 
@@ -32,13 +29,22 @@ export class UI {
                 <div id="label-sentience-count">${ASentienceCount}</div>
             </header>
             <div class="content-sentience">
-                <button id="button-sentience-gen">GENERATE</button>
+                <button class="generate-button" id="button-sentience-gen">GENERATE</button>
             </div>
         `;
         const sentienceGenButton = document.getElementById("button-sentience-gen");
         sentienceGenButton.addEventListener("click", (e) => {
             this.onGenerateClick("sentience");
         });
+    }
+
+    buildSettingsScreen() {
+        const root = document.getElementById("settings-root");
+        root.innerHTML = `
+            <div class="settings-container">
+
+            </div>
+        `;
     }
 
     UpdateCurrencyCountLabel(ACurrencyType, ADataPackage) {

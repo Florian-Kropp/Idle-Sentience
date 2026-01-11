@@ -1,10 +1,12 @@
+import { ObjectUtils } from "./helpFkt.js";
+
 export class GameState {
     constructor() {
         this.stateData = {};
     }
 
-    isEntry() {
-
+    isEmpty() {
+        return ObjectUtils.isEmpty(this.stateData);
     }
 
     isKey(AKey) {
@@ -38,14 +40,24 @@ export class GameState {
         return this.stateData[AKey];
     }
 
-    saveGameState() {
+    saveDataLocal() {
         localStorage.setItem("GameState", JSON.stringify(this.stateData));
     }
 
-    loadGameState() {
-        const data = localStorage.getItem("GameState");
-        if ((data !== null)) {
-            this.stateData = JSON.parse(data);
+    loadAndCompare(ACloudData) {
+        const localRaw = localStorage.getItem("GameState");
+        const localData = localRaw ? JSON.parse(localRaw) : null;
+        const localCount = localData?.saveCount ?? -1;
+        const cloudCount = ACloudData?.saveCount ?? -1;
+
+        if ((cloudCount >= localCount) && ACloudData) {
+            this.stateData = ACloudData;
+            console.log("GameState: Cloud-Daten übernommen.");
+        } else if (localData) {
+            this.stateData = localData;
+            console.log("GameState: Lokal-Daten übernommen.");
+        } else {
+            this.stateData = {};
         }
     }
 }

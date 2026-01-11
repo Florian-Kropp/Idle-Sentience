@@ -1,8 +1,4 @@
 export class Currency {
-    constructor() {
-
-    }
-
     getClickIncreaseGeneral(ACurrency) {
         switch(ACurrency) {
             case "sentience":
@@ -13,6 +9,4 @@ export class Currency {
     getClickIncreaseSentience() {
         return 1;
     }
-
-
 }

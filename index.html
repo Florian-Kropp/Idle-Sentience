@@ -3,9 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
   <title>Idle Sentience</title>
-
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" type="image/png" href="img/icon.png">
 </head>
@@ -15,28 +13,21 @@
       <header class="header">
         <span class="header-title">Idle Sentience</span>
       </header>
-
       <div class="below-header">
         <nav class="tab-bar">
           <button class="tab-button" data-nav="screen-sentience">Sentience</button>
           <button class="tab-button" data-nav="screen-settings">Settings</button>
         </nav> 
-
         <section id="screen-sentience" data-screen hidden>
           <div id="sentience-root"></div>
         </section>
-
         <section id="screen-settings" data-screen hidden>
           <div id="settings-root"></div>
         </section>
-
-
       </div>
     </div>
-
-
   </main>
-
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script type="module" src="js/gameEngine.js"></script>
 </body>
 </html>
