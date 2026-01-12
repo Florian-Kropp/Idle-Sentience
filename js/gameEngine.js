@@ -5,7 +5,9 @@ import { DatabaseService } from "./db.js";
 
 class GameEngine {
     constructor() {
-        this.ui = new UI((ACurrencyType) => this.increaseCurrencyCountClick(ACurrencyType));
+        this.ui = new UI({
+            onGenerateClick: (ACurrencyType) => this.increaseCurrencyCountClick(ACurrencyType),
+        });
         this.currency = new Currency();
         this.gameState = new GameState();
         this.playerID = this.generatePlayerID();
@@ -32,7 +34,8 @@ class GameEngine {
         this.gameState.initData("playerID", this.playerID);
         this.gameState.initData("sentienceCount", 0);
         this.gameState.initData("saveCount", 0);
-        this.ui.showScreen("screen-sentience", this.getUiDataPackage()); 
+        this.ui.showScreen("sentience-screen", this.getUiDataPackage()); 
+        setInterval(() => this.ui.updateUI(this.getUiDataPackage()), 50);
         setInterval(() => this.syncData(), 5 * 60 * 1000);
     }
 
@@ -50,7 +53,7 @@ class GameEngine {
         const oldNum = this.gameState.getData(`${ACurrencyType}Count`);
         const newNum = oldNum + this.currency.getClickIncreaseGeneral(ACurrencyType);
         this.gameState.editData(`${ACurrencyType}Count`, newNum);
-        this.ui.UpdateCurrencyCountLabel(ACurrencyType, this.getUiDataPackage());
+        this.ui.updateUI(this.getUiDataPackage());
     }
 
     async syncData() {
@@ -62,3 +65,4 @@ class GameEngine {
 }
 let game = new GameEngine();
 game.init();
+window.game = game;

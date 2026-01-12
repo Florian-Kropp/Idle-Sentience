@@ -15,18 +15,20 @@
       </header>
       <div class="below-header">
         <nav class="tab-bar">
-          <button class="tab-button" data-nav="screen-sentience">Sentience</button>
-          <button class="tab-button" data-nav="screen-settings">Settings</button>
+          <button class="tab-button" data-nav="sentience-screen">Sentience</button>
+          <button class="tab-button" data-nav="settings-screen">Settings</button>
         </nav> 
-        <section id="screen-sentience" data-screen hidden>
+        <section id="sentience-screen" data-screen hidden>
           <div id="sentience-root"></div>
         </section>
-        <section id="screen-settings" data-screen hidden>
+        <section id="settings-screen" data-screen hidden>
           <div id="settings-root"></div>
         </section>
       </div>
     </div>
   </main>
+  <div id="login-root"></div>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script type="module" src="js/gameEngine.js"></script>
 </body>
